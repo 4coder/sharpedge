@@ -1,5 +1,5 @@
 
-<!-- saved from url=(0079)http://ritenv.com/templates/new-year-2013/css/style.php?theme=dark&color=eee06d -->
+<!-- saved from url=(0079)http://ritenv.com/templates/new-year-2013/css/style.html?theme=dark&color=eee06d -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></head><body>/* less codes */
 @mainColor: #F6F6F6;
 @whiteColor: #fff;
