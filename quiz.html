@@ -1,0 +1,349 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>New Year 2013</title> 
+	<meta id="extViewportMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />	
+
+	<!-- Home screen icon  Mathias Bynens mathiasbynens.be/notes/touch-icons -->
+	<!-- For iPhone 4 with high-resolution Retina display: -->
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icon.png" />
+	<!-- For first-generation iPad: -->
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icon.png" />
+	<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+	<link rel="apple-touch-icon-precomposed" href="images/icon.png" />
+	<!-- For nokia devices: -->
+	<link rel="shortcut icon" href="images/icon.png" />
+
+
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.24.custom.css" />
+	<link rel="stylesheet" href="css/themes/default/RSVmain.min.css" />
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile.structure-1.1.1.min.css" />
+	<link rel="stylesheet" href="css/flexslider.css" />
+	<link rel="stylesheet" href="css/photoswipe.css" />
+	<link rel="stylesheet" href="css/add2home.css" />
+	
+	
+        <link rel="stylesheet/less" href="css/style.html?theme=light&color=696069" />
+
+	 <!-- fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css' />
+	
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery-ui-1.8.24.custom.min.js"></script>
+	
+	<script type="text/javascript" src="js/jquery.mobile-1.1.1.min.js"></script>
+        <script type="text/javascript" src="js/less-1.3.0.min.js"></script>
+        <!--<script type="text/javascript" src="js/jquery-ui-effects.js"></script>-->
+
+	<script src="js/helper.js"></script>
+	<script src="js/jquery.flexslider-min.js"></script>
+	<script src="js/iphone-style-checkboxes.js"></script>
+	<script src="js/klass.min.js"></script>
+	<script src="js/code.photoswipe.jquery-3.0.5.min.js"></script>
+	<script src="js/add2home.js"></script>
+        
+	<script type="text/javascript" src="js/app.js?v=30"></script>
+	
+	<script>
+	
+		var submit_ques = [0,0,0];
+		var skip_ques = [0,0,0];
+		
+		var question = 0;
+		
+		$(document).ready(function()
+		{
+			//alert(submit_ques);
+			
+			$("#next").click(function()
+			{
+				radio_id = question+1;
+				div_id = question+1;
+				
+				if($("input:radio[name='radio" + radio_id + "']").is(":checked"))
+				{
+					submit_ques[question] = $("input:radio[name='radio" + radio_id + "']:checked").val()
+					
+					if(question < 2)
+					{
+						$("#div_quiz_"+div_id).hide();
+						div_id = question+2;
+						$("#div_quiz_"+div_id).show();
+						$("#div_quiz_"+div_id).show('slide', {direction: 'right'}, "slow");
+					
+						question++;
+					}
+					else
+					{
+					
+						$("#next").hide();
+						$("#skip").hide();
+					}
+				}
+				else
+				{
+					$("#div_alert_"+div_id).show();
+				}
+				
+				
+				
+					//$("#next").hide();
+					//$("#skip").hide();
+				
+			});
+			
+			$("#skip").click(function()
+			{
+				skip_ques[question] = question+1;
+				
+				if(question < 2)
+				{
+					div_id = question+1;
+					$("#div_quiz_"+div_id).hide();
+						
+					div_id = question+2;
+					$("#div_quiz_"+div_id).show();
+					$("#div_quiz_"+div_id).show('slide', {direction: 'right'}, "slow");
+						
+					question++;
+				}
+				else
+				{
+				
+					$("#next").hide();
+					$("#skip").hide();
+				}
+				
+			});
+			
+			$("#submit").click(function()
+			{
+				$("#div_quiz_1").hide();
+				$("#div_quiz_2").hide();
+				$("#div_quiz_3").hide();
+				$("#div_buttons").hide();
+				
+				var total_qestion = 3;
+				var total_attempt_qestion = 0;
+				var total_skip_qestion = 0;
+				
+				
+				for(var i=0; i<submit_ques.length; i++)
+				{
+					if(submit_ques[i] != 0)
+					total_attempt_qestion++;
+				}
+				
+				for(var i=0; i<skip_ques.length; i++)
+				{
+					if(skip_ques[i] != 0)
+					total_skip_qestion++;
+				}
+				
+				var total_corrent_qestion = Math.floor(Math.random() * (total_attempt_qestion - 0 + 1) + 0);
+				var percent = (total_corrent_qestion/total_qestion * 100).toFixed(2);
+				
+				$("#tbl_quiz_result").append('<tr> <td>Total Question</td> <td>' + total_qestion + '</td> </tr><tr> <td>Total Attempt Question</td> <td>' + total_attempt_qestion + '</td> </tr> <tr> <td>Total Skipped Question</td> <td>' + total_skip_qestion + '</td> </tr> <tr> <td>Result</td> <td>' + percent + '</td> </tr>'
+											);
+				$("#div_result").show('slide', {direction: 'down'}, "slow");;
+				
+			});
+			
+		});
+	</script>
+	
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head> 
+
+<body>
+	<!-- Splash screen -->
+  	
+  <!-- end splash screen -->
+	<!--<div id="menu">
+		<form action="search.html"><h3><input id="search" type="text" placeholder="Search" /> </h3></form>
+		<ul>
+			<li class="active"><a href="./" adata-transition="slidedown" class="contentLink">Home</a></li>
+			<li><a href="company-profile.html" adata-transition="slidedown" class="contentLink">Company Profile</a></li>
+			<li><a href="products-services.html"adata-transition="slidedown" class="contentLink">Products &amp; Services</a></li>
+			<li><a href="portfolio.html" adata-transition="slidedown" class="contentLink">Portfolio</a></li>
+			<li><a href="news-events.html" adata-transition="slidedown" class="contentLink">News &amp; Events</a></li>
+			<li><a href="gallery.html" adata-transition="slidedown" class="contentLink">Gallery</a></li>
+			<li><a href="typography.html" adata-transition="slidedown" class="contentLink">Typography</a></li>
+			<li><a href="blog.html" adata-transition="slidedown" class="contentLink">Wordpress Blog</a></li>
+			<li><a href="twitter.html" adata-transition="slidedown" class="contentLink">Twitter Feeds</a></li>
+			<li><a href="video-channel.html" adata-transition="slidedown" class="contentLink">Video Channel</a></li>
+			<li><a href="contact-us.html" adata-transition="slidedown" class="contentLink">Contact Us</a></li>
+			<li><a href="about.html" adata-transition="slidedown" class="contentLink">About</a></li>
+                        <li><a href="404.html" adata-transition="slidedown" class="contentLink">404</a></li>
+		</ul>
+	</div>--><div data-dom-cache="false" data-role="page" class="pages" id="home" data-theme="a">
+	<div data-role="header" data-position="fixed">
+            <div class="left">
+                <a href="course.html" class="showMenu menu-button"><img src="images/menu-button.png" width="16" /></a>
+            </div>
+            <h1><p class="no-margin">QUIZ</p><p class="no-margin">GCAS & EDGEWATER</p></h1>
+            
+	</div>
+        
+        <!-- /header -->
+    
+	<div data-role="content" data-theme="a" class="minus-shadow">
+            <div class="cherry-slider" style="height: 70px; background: url(images/content/construct2.jpg) 0 -280px no-repeat;">
+		<div anim="slide" anim-speed="300" anim-direction="right" anim-position-left="30" anim-position-top="25" class="anim-item"><p class="little-padding white-bg gray-border">QUIZ</p></div>
+		<div anim="slide" anim-speed="300" anim-direction="right" anim-position-left="75" anim-position-top="25" class="anim-item"><p class="little-padding white-bg gray-border">PORTAL</p></div>
+		
+		<div anim="fade" anim-speed="2700" class="anim-item wait-item"></div>
+                <div anim-action="break" anim="fade" anim-speed="700" class="anim-item"></div>
+                
+		<div anim="fade" anim-speed="2000" class="anim-item wait-item"></div>
+		<div anim-action="break" anim="fade" anim-speed="700" class="anim-item"></div>
+		<div anim-action="restart" anim="fade" anim-speed="100" class="anim-item wait-item"></div>
+                
+        </div>
+	    
+		
+		<div class="white-content-box" id="div_quiz_1">
+	   
+			<div class="alert" id="div_alert_1"  style="display:none">
+			    <div class="typo-icon">
+					Please select any answer.
+			    </div>
+			</div>
+			
+			<ul class="nav-list">
+				<li><a><h3>1. Airside area of the airport includes : </h3></a></li>
+			</ul>
+		
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup">
+					<input type="radio" name="radio1" id="checkbox-1a" class="custom" value="1" />
+					<label for="checkbox-1a">Public transportation train stations</label>
+
+					<input type="radio" name="radio1" id="checkbox-2a" class="custom" value="2"/>
+					<label for="checkbox-2a">Parking lots</label>
+					
+					<input type="radio" name="radio1"id="checkbox-3a" class="custom" value="3"/>
+					<label for="checkbox-3a">All areas accessible to aircarft</label>
+
+					<input type="radio" name="radio1" id="checkbox-4a" class="custom" value="4"/>
+					<label for="checkbox-4a">None of these</label>
+				</fieldset>
+			</div>
+		</div>
+
+		<div class="white-content-box" style="display:none" id="div_quiz_2">
+	   
+			<div class="alert" id="div_alert_2"  style="display:none">
+			    <div class="typo-icon">
+					Please select any answer.
+			    </div>
+			</div>
+			
+			<ul class="nav-list">
+				<li><a> <h3> 2. A _____________ is an area where arriving passengers claim checked-in baggage after disembarking from an airline flight. Pick the most appropriate choice? </h3> </a></li>
+			</ul>
+		
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup">
+					<input type="radio" name="radio2" id="checkbox-1a" class="custom" value="1" />
+					<label for="checkbox-1a">Baggage claim area</label>
+
+					<input type="radio" name="radio2" id="checkbox-2a" class="custom" value="2" />
+					<label for="checkbox-2a">Airside area</label>
+					
+					<input type="radio" name="radio2"id="checkbox-3a" class="custom"  value="3" />
+					<label for="checkbox-3a">Runway</label>
+
+					<input type="radio" name="radio2" id="checkbox-4a" class="custom" value="4" />
+					<label for="checkbox-4a">None of these</label>
+				</fieldset>
+			</div>
+		</div>
+		
+		<div class="white-content-box" style="display:none" id="div_quiz_3">
+	   
+			<div class="alert" id="div_alert_3"  style="display:none">
+			    <div class="typo-icon">
+					Please select any answer.
+			    </div>
+			</div>
+			
+			<ul class="nav-list">
+				<li><a> <h3> 3. ________________  are retail outlets that are exempted from the payment of certain local or national taxes and duties. </h3> </a></li>
+			</ul>
+		
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup">
+					<input type="radio" name="radio3" id="checkbox-1a" class="custom" value="1" />
+					<label for="checkbox-1a">Duty free shops</label>
+
+					<input type="radio" name="radio3" id="checkbox-2a" class="custom" value="2" />
+					<label for="checkbox-2a">Lounges</label>
+					
+					<input type="radio" name="radio3"id="checkbox-3a" class="custom" value="3" />
+					<label for="checkbox-3a">Airline information counters</label>
+
+					<input type="radio" name="radio3" id="checkbox-4a" class="custom" value="4" />
+					<label for="checkbox-4a">None of these</label>
+				</fieldset>
+			</div>
+		</div>
+		
+		<div class="white-content-box"  id="div_buttons">
+			<ul class="column-split three-column">
+				<li>
+					<a id="skip" class="button button5">Skip</a>
+				</li>
+				<li>
+					<a id="submit" class="button button3">Submit</a>
+				</li>
+				<li>
+					<a id="next" class="button button7">Next</a>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="white-content-box" id="div_result" style="display:none">
+			<div class="">
+				<h3>Quiz Result</h3>
+				<br />
+				<table cellpadding="0" cellspacing="0" class="table3" width="99%" id="tbl_quiz_result"  >
+					<tr>
+						<thead>
+							
+							<th></th>
+							<th></th>
+							
+						</thead>
+						<tbody>
+						</tbody>
+					</tr>
+				</table>
+			</div>
+        </div>
+		
+    </div>
+	    
+	</div><!-- /content -->
+        
+        <div class="bread-crumb">
+            <ul>
+                <li><a data-transition="pop" href="index.html"><img src="images/bc-home.png" width="16" /></a></li>
+                <li><span>Typography</span></li>
+            </ul>
+        </div>
+        <div data-role="footer" data-position="fixed">
+    <div class="footer-actions">
+        <a href=""><img src="images/icons/phone.png" /></a>
+        <a target="_blank" href=""><img src="images/icons/fb.png" /></a>
+        <a href=""><img src="images/icons/location.png" /></a>
+        <div class="clear"></div>
+    </div>
+    <p class="right">&copy; Sharp Edge Learning.</p>
+    <div class="clear"></div>
+</div></div><!-- /page -->
+
+</body>
+</html>
