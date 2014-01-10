@@ -1,8 +1,7 @@
-<!-- DOWNLOADED FROM WWW.SCRIPTGATES.COM! -->
 <!DOCTYPE html> 
 <html> 
 	<head> 
-	<title>Sharp Edge Learning</title> 
+	<title>GCAS </title> 
 	<meta id="extViewportMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />	
@@ -46,13 +45,46 @@
 	<script src="js/code.photoswipe.jquery-3.0.5.min.js"></script>
 	<script src="js/add2home.js"></script>
 	
+	<script type="text/javascript">
+
+
+    $(document).ready(function() {
+
+
+        $('#login').click(function(e) {
+           
+			var name = $("#name").val();
+			var password = $("#password").val();
+			
+			
+			if(name == "edgewater" & password == "Edge#123")
+			{
+				window.location = "course.html";
+			}
+			else
+			{
+				$( "#alart" ).show();
+			}
+
+
+           
+        });
+    });
+    
+
+
+
+
+
+</script>
+	
         
 	<script type="text/javascript" src="js/app.js?v=30"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head> 
 
 <body>
 	<!-- Splash screen -->
-  	
+  	 
   <!-- end splash screen -->
 	<!--<div id="menu">
 		<form action="search.html"><h3><input id="search" type="text" placeholder="Search" /> </h3></form>
@@ -71,50 +103,46 @@
 			<li><a href="about.html" adata-transition="slidedown" class="contentLink">About</a></li>
                         <li><a href="404.html" adata-transition="slidedown" class="contentLink">404</a></li>
 		</ul>
-	</div>--><div data-cache="never" data-role="page" class="pages" id="home" data-theme="a">
-	<div data-role="content" data-theme="a" class="minus-shadow">
-		<div class="menu-blocks">
-			<a class="menu-block" href="products-services.html" data-transition="pop">
-				<img src="images/menu/intro.png" />
-				<span>Course 1</span>
-			</a>
-			<a class="menu-block" href="products-services.html" data-transition="pop">
-				<img src="images/menu/products.png" />
-				<span>Course 2</span>
-			</a>
-			<a class="menu-block" href="products-services.html" data-transition="pop">
-				<img src="images/menu/portfolio.png" />
-				<span>Course 3</span>
-			</a>
-			<a class="menu-block" href="products-services.html" data-transition="pop">
-				<img src="images/menu/news.png" />
-				<span>Course 4</span>
-			</a>
-			<a class="menu-block" href="products-services.html" data-transition="pop">
-				<img src="images/menu/gallery.png" />
-				<span>Course 5</span>
-			</a>
-			<a class="menu-block" href="products-services.html" data-transition="pop">
-				<img src="images/menu/elements.png" />
-				<span>Course 6</span>
-			</a>
-			<a class="menu-block" href="products-services.html" data-transition="pop">
-				<img src="images/menu/blog.png" />
-				<span>Course 7</span>
-			</a>
-			<a class="menu-block" href="products-services.html" data-transition="pop">
-				<img src="images/menu/videos.png" />
-				<span>Course 8</span>
-			</a>
-			
-			<div class="clear"></div>
-		</div>
-		<div class="website-heading">
-			<p class="head">GCAS & EDGEWATER</p>
-			<p class="subhead">A Joint Venture</p>
-		</div>
-        </div><!-- /content -->
+	</div>--><div data-dom-cache="false" data-role="page" class="pages" id="home" data-theme="a">
+	
         
+        <!-- /header -->
+    
+	<div data-role="content" data-theme="a" class="minus-shadow">
+            <div class="cherry-slider" style="height: 120px;left:300px">
+                <div anim="fade" anim-speed="400" anim-direction="right" anim-position-left="10" anim-position-top="30" class="anim-item"><img src="images/logoew.png"  /></div>
+                
+            </div>
+			<div class="white-content-box">
+            <form class="ajax-form designed" action="submit_contact.html" method="post" />
+				<div class="form-element">
+				  <label for="txtfullname">Please Enter Your Username</label>
+				  <input id="name" name="fullname" type="text" placeholder="required" required />
+				</div>
+				<div class="form-element">
+				  <label for="txtemail">Please Enter Your Password</label>
+				  <input id="password" name="email" type="password" placeholder="required" required />
+				</div>
+				<div id="alart" class="alert" style="display:none">
+			    <div class="typo-icon">
+				Username or Password Incorrect
+			    </div>
+			</div>
+				
+				<input type="reset" class="button button3" value="Reset" />
+				<input data-theme="b" type="button" class="button button2" id="login" value="Login" />
+			</form>
+			</div>
+
+	</div><!-- /content -->
+        
+        <div class="bread-crumb">
+            <ul>
+                <li><a data-transition="pop" href="index.html"><img src="images/bc-home.png" width="16" /></a></li>
+                <li><a data-transition="pop" href="company-profile.html"><span>Company Profile</span></a></li>
+                <li><span>Mission &amp; Vision</span></li>
+            </ul>
+        </div>
         <div data-role="footer" data-position="fixed">
     <div class="footer-actions">
         <a href=""><img src="images/icons/phone.png" /></a>
